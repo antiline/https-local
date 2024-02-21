@@ -1,0 +1,18 @@
+[http]
+
+[http.routers.a]
+rule = "Host(`a.com`)"
+service = "a"
+entryPoints = ["https"]
+[http.routers.a.tls]
+
+
+[http.services]
+[http.services.a.loadbalancer]
+[[http.services.a.loadbalancer.servers]]
+url = "http://localhost:3000"
+
+
+[[tls.certificates]]
+certFile = "../cert/a.com+1.pem"
+keyFile = "../cert/a.com+1-key.pem"

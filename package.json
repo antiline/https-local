@@ -1,0 +1,24 @@
+{
+  "name": "https-local",
+  "license": "UNLICENSED",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "src/frontend"
+    ],
+    "nohoist": [
+      "**/*"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  },
+  "scripts": {
+    "dev": "concurrently -c \"bgGreen.bold,bgMagenta.bold,bgYellow.bold,bgBlue.bold\" \"yarn:run-*\"",
+    "run-traefik": "cd docs/infra/local/traefik && traefik --configFile=traefik.toml > /dev/null",
+    "run-frontend": "yarn workspace my-app dev"
+  },
+  "dependencies": {
+    "nodemon": "3.0.2"
+  }
+}
